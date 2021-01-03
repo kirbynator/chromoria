@@ -64,7 +64,7 @@ class Begin extends React.Component {
 
   button() {
     if (this.props.color.started < 3) {
-      if (this.state.dia == 1) {
+      if (this.state.dia === 1) {
         return (
           <div>
             <button onClick={() => this.setState({ dia: this.state.dia + 1 })}>

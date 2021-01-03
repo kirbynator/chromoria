@@ -43,7 +43,7 @@ class OutsideHome extends React.Component {
   }
 
   win = (r) => {
-    if (r == "w") {
+    if (r === "w") {
       this.setState({ action: false });
       this.props.loader("outsidehome", { started: 2 });
     } else if ("l") {

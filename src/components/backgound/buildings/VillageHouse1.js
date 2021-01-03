@@ -1,4 +1,3 @@
-import React from "react";
 import VillageHouse1G from  "../../../media/green/VillageHouse1G.png"
 import VillageHouse1W from  "../../../media/white/VillageHouse1W.png"
 import VillageHouse1P from  "../../../media/pink/VillageHouse1P.png"

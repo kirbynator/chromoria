@@ -26,9 +26,9 @@ class Home extends React.Component {
   };
 
   button(value) {
-    if (value.toLowerCase() == "resume") {
+    if (value.toLowerCase() === "resume") {
       this.setState({ opt: false, input: "" });
-    } else if (value.toLowerCase() == "quit") {
+    } else if (value.toLowerCase() === "quit") {
       window.location.reload(false);
     }
   }
@@ -59,9 +59,9 @@ class Home extends React.Component {
     console.log(x);
     var a = [];
     x.map((r) => {
-      if (r == "true") {
+      if (r === "true") {
         a.splice(a.length, 0, true);
-      } else if (r == "false") {
+      } else if (r === "false") {
         a.splice(a.length, 0, false);
       } else if (parseInt(r, 10)) {
         a.splice(a.length, 0, parseInt(r, 10));

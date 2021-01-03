@@ -81,8 +81,8 @@ class Memory extends React.Component {
             {this.text()}
           </p>
           {this.state.dia < 2 ||
-          this.state.dia == 5 ||
-          this.state.dia == 7 ||
+          this.state.dia === 5 ||
+          this.state.dia === 7 ||
           this.state.dia > 9 ||
           this.state.dia > 19 ? (
             <button onClick={() => this.setState({ dia: this.state.dia + 1 })}>
@@ -114,7 +114,7 @@ class Memory extends React.Component {
         }
         break;
       case 4:
-        this.state.c1.value == this.state.c2.value
+        this.state.c1.value === this.state.c2.value
           ? this.setState({ dia: 5 })
           : this.setState({ dia: 7 });
         break;
@@ -158,7 +158,7 @@ class Memory extends React.Component {
         return "Here is my second choice";
         break;
       case 14:
-        this.state.bot[0].value == this.state.bot[1].value
+        this.state.bot[0].value === this.state.bot[1].value
           ? this.setState({ dia: 15 })
           : this.setState({ dia: 17 });
         break;
@@ -207,7 +207,7 @@ class Memory extends React.Component {
     c.splice(x.index, 1, x);
     if (!this.state.c1) {
       this.setState({ cards: c, c1: x });
-    } else if (this.state.c1 && this.state.c1 != x && !this.state.c2) {
+    } else if (this.state.c1 && this.state.c1 !== x && !this.state.c2) {
       this.setState({ cards: c, c2: x, dia: 4 });
     }
   };
@@ -219,8 +219,8 @@ class Memory extends React.Component {
       c.splice(this.state.c2.index, 1, { value: null, index: null });
       const newAI = this.state.ai.map((card) => {
         if (
-          card.index != this.state.c1.index &&
-          card.index != this.state.c2.index
+          card.index !== this.state.c1.index &&
+          card.index !== this.state.c2.index
         ) {
           return card;
         }
@@ -263,8 +263,8 @@ class Memory extends React.Component {
       c.splice(this.state.bot[0].index, 1, { value: null, index: null });
       const newAI = this.state.ai.map((card) => {
         if (
-          card.index != this.state.bot[1].index &&
-          card.index != this.state.bot[0].index
+          card.index !== this.state.bot[1].index &&
+          card.index !== this.state.bot[0].index
         ) {
           return card;
         }
@@ -299,13 +299,13 @@ class Memory extends React.Component {
   };
 
   ai() {
-    if (this.state.dia == 9) {
+    if (this.state.dia === 9) {
       var good = null;
       this.state.ai.map((card, i) => {
         var c = this.state.ai;
         c.splice(i, 1);
         c.map((x) => {
-          return card.value == x.value ? (good = [card, x]) : null;
+          return card.value === x.value ? (good = [card, x]) : null;
         });
       });
     }
@@ -328,7 +328,7 @@ class Memory extends React.Component {
   }
 
   undup(v) {
-    if (-1 === this.state.ai.findIndex((c) => c.index == v.index)) {
+    if (-1 === this.state.ai.findIndex((c) => c.index === v.index)) {
       this.setState({ ai: [...this.state.ai, v] });
     }
     return true;

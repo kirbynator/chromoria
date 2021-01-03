@@ -75,7 +75,7 @@ class Village1 extends React.Component {
   }
 
   bubble() {
-    if (this.state.hjk.boo == true) {
+    if (this.state.hjk.boo === true) {
       return (
         <div>
           <p

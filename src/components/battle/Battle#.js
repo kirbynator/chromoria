@@ -11,7 +11,7 @@ class Battle extends React.Component {
   action(n) {
     const { game } = this.state;
 
-    if (game[n] == "") {
+    if (game[n] === "") {
       var arr = game.slice();
       arr.splice(n, 1, "X");
       this.setState({ game: arr, dia: 4, go: 1 });
@@ -20,45 +20,45 @@ class Battle extends React.Component {
 
   result() {
     const { game, go } = this.state;
-    if (go == 1) {
+    if (go === 1) {
       if (
-        (game[0] == "X" && game[4] == "X" && game[8] == "X") ||
-        (game[2] == "X" && game[4] == "X" && game[6] == "X") ||
-        (game[0] == "X" && game[1] == "X" && game[2] == "X") ||
-        (game[3] == "X" && game[4] == "X" && game[5] == "X") ||
-        (game[6] == "X" && game[7] == "X" && game[8] == "X") ||
-        (game[0] == "X" && game[3] == "X" && game[6] == "X") ||
-        (game[1] == "X" && game[4] == "X" && game[7] == "X") ||
-        (game[2] == "X" && game[5] == "X" && game[8] == "X")
+        (game[0] === "X" && game[4] === "X" && game[8] === "X") ||
+        (game[2] === "X" && game[4] === "X" && game[6] === "X") ||
+        (game[0] === "X" && game[1] === "X" && game[2] === "X") ||
+        (game[3] === "X" && game[4] === "X" && game[5] === "X") ||
+        (game[6] === "X" && game[7] === "X" && game[8] === "X") ||
+        (game[0] === "X" && game[3] === "X" && game[6] === "X") ||
+        (game[1] === "X" && game[4] === "X" && game[7] === "X") ||
+        (game[2] === "X" && game[5] === "X" && game[8] === "X")
       ) {
         this.setState({ dia: 5, go: 3, but: true });
       } else {
         var n = [];
         this.state.game.map((c, i) => {
-          if (c == "") {
-            n.splice(0, 0, i);
+          if (c === "") {
+           return n.splice(0, 0, i);
           }
         });
         var arr = this.state.game.slice();
         arr.splice(n[Math.floor(Math.random() * n.length)], 1, "O");
         this.setState({ game: arr, dia: 4, go: 4 });
       }
-    } else if (go == 4) {
+    } else if (go === 4) {
       if (
-        (game[0] == "O" && game[4] == "O" && game[8] == "O") ||
-        (game[2] == "O" && game[4] == "O" && game[6] == "O") ||
-        (game[0] == "O" && game[1] == "O" && game[2] == "O") ||
-        (game[3] == "O" && game[4] == "O" && game[5] == "O") ||
-        (game[6] == "O" && game[7] == "O" && game[8] == "O") ||
-        (game[0] == "O" && game[3] == "O" && game[6] == "O") ||
-        (game[1] == "O" && game[4] == "O" && game[7] == "O") ||
-        (game[2] == "O" && game[5] == "O" && game[8] == "O")
+        (game[0] === "O" && game[4] === "O" && game[8] === "O") ||
+        (game[2] === "O" && game[4] === "O" && game[6] === "O") ||
+        (game[0] === "O" && game[1] === "O" && game[2] === "O") ||
+        (game[3] === "O" && game[4] === "O" && game[5] === "O") ||
+        (game[6] === "O" && game[7] === "O" && game[8] === "O") ||
+        (game[0] === "O" && game[3] === "O" && game[6] === "O") ||
+        (game[1] === "O" && game[4] === "O" && game[7] === "O") ||
+        (game[2] === "O" && game[5] === "O" && game[8] === "O")
       ) {
         this.setState({ dia: 7, go: 3, but: true });
       } else {
         this.setState({ go: 0 });
       }
-      if (game.indexOf("") == -1 && this.state.dia < 9) {
+      if (game.indexOf("") === -1 && this.state.dia < 9) {
         this.setState({ dia: 9, but: true });
       }
     }

@@ -22,8 +22,8 @@ class DesireStone extends React.Component {
   bubble() {
     if (
       this.props.color.started < 4 &&
-      this.state.dia != 6 &&
-      this.state.dia != 17
+      this.state.dia !== 6 &&
+      this.state.dia !== 17
     ) {
       return (
         <div>
@@ -50,7 +50,7 @@ class DesireStone extends React.Component {
 
   button() {
     if (this.props.color.started < 4) {
-      if (this.state.dia == 10) {
+      if (this.state.dia === 10) {
         return (
           <div>
             <button onClick={() => this.setState({ dia: this.state.dia + 1 })}>
@@ -157,7 +157,7 @@ class DesireStone extends React.Component {
           >
             <img
               onMouseOver={
-                this.state.dia == 5
+                this.state.dia === 5
                   ? () => this.setState({ battle: true, dia: 6 })
                   : null
               }

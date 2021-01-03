@@ -33,39 +33,39 @@ class HomeUvillage extends React.Component {
   }
 
   timer = () => {
-    if (this.state.bmM == -250) {
+    if (this.state.bmM === -250) {
       this.setState({ bmD: false, bmM: this.state.bmM + 1 });
-    } else if (this.state.bmM == 250) {
+    } else if (this.state.bmM === 250) {
       this.setState({ bmD: true, bmM: this.state.bmM - 1 });
-    } else if (this.state.bmD == false) {
+    } else if (this.state.bmD === false) {
       this.setState({ bmM: this.state.bmM + 1 });
-    } else if (this.state.bmD == true) {
+    } else if (this.state.bmD === true) {
       this.setState({ bmM: this.state.bmM - 1 });
     }
 
-    if (this.state.mdM == -250) {
+    if (this.state.mdM === -250) {
       this.setState({ mdD: false, mdM: this.state.mdM + 1 });
-    } else if (this.state.mdM == 250) {
+    } else if (this.state.mdM === 250) {
       this.setState({ mdD: true, mdM: this.state.mdM - 1 });
-    } else if (this.state.mdD == false) {
+    } else if (this.state.mdD === false) {
       this.setState({ mdM: this.state.mdM + 1 });
-    } else if (this.state.mdD == true) {
+    } else if (this.state.mdD === true) {
       this.setState({ mdM: this.state.mdM - 1 });
     }
 
-    if (this.state.tpM == -250) {
+    if (this.state.tpM === -250) {
       this.setState({ tpD: false, tpM: this.state.tpM + 1 });
-    } else if (this.state.tpM == 250) {
+    } else if (this.state.tpM === 250) {
       this.setState({ tpD: true, tpM: this.state.tpM - 1 });
-    } else if (this.state.tpD == false) {
+    } else if (this.state.tpD === false) {
       this.setState({ tpM: this.state.tpM + 1 });
-    } else if (this.state.tpD == true) {
+    } else if (this.state.tpD === true) {
       this.setState({ tpM: this.state.tpM - 1 });
     }
   };
 
   win = (r) => {
-    if (r == "w" && this.state.action) {
+    if (r === "w" && this.state.action) {
       switch (this.state.duel) {
         case "t":
           this.setState({ tpL: false, action: false });
