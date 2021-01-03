@@ -1,4 +1,5 @@
 import React from "react";
+import StoredURL from '../../../media/white/lifeStored.jpg'
 
 class Begin extends React.Component {
   state = { dia: 0, hjk: false, dia: 0 };
@@ -153,7 +154,7 @@ class Begin extends React.Component {
                 width: "256px",
                 height: "256px"
               }}
-              src="https://i.imgflip.com/3tnjfn.jpg"
+              src={StoredURL}
             ></img>
             <img
               onMouseEnter={() => this.setState({ meme: true })}

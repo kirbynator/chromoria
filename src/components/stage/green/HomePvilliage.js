@@ -1,5 +1,6 @@
 import React from "react";
-import Battle from "../battle/Battle#";
+import Battle from "../../battle/Battle#";
+import Outside from "../../backgound/Outside"
 
 class HomeUvillage extends React.Component {
   state = {
@@ -8,34 +9,21 @@ class HomeUvillage extends React.Component {
     tpM: 26,
     tpD: true,
     mdD: false,
-    lfD: true,
-    ctD: true,
-    rtD: false,
-    lfM: 5,
-    ctM: 5,
-    rtM: 5,
+    mdM: 5,
     bmL: true,
     mdL: true,
     tpL: true,
-    lfL: true,
-    ctL: true,
-    rtL: true,
+    sL: true,
     action: false,
   };
   componentDidMount() {
     var t = Math.floor(Math.random() * 200);
     var m = Math.floor(Math.random() * -100);
     var b = Math.floor(Math.random() * 100);
-    var l = 180;
-    var c = 140;
-    var r = 100;
     this.setState({
       tpM: t,
       mdM: m,
       bmM: b,
-      lfM: l,
-      ctM: c,
-      rtM: r,
       interval: setInterval(this.timer, 10),
     });
   }
@@ -65,35 +53,6 @@ class HomeUvillage extends React.Component {
       this.setState({ mdM: this.state.mdM - 1 });
     }
 
-    if (this.state.lfM == -200) {
-      this.setState({ lfD: false, lfM: this.state.lfM + 1 });
-    } else if (this.state.lfM == 200) {
-      this.setState({ lfD: true, lfM: this.state.lfM - 1 });
-    } else if (this.state.lfD == false) {
-      this.setState({ lfM: this.state.lfM + 1 });
-    } else if (this.state.lfD == true) {
-      this.setState({ lfM: this.state.tpM - 1 });
-    }
-
-    if (this.state.ctM == -200) {
-      this.setState({ ctD: false, ctM: this.state.ctM + 1 });
-    } else if (this.state.ctM == 200) {
-      this.setState({ ctD: true, ctM: this.state.ctM - 1 });
-    } else if (this.state.ctD == false) {
-      this.setState({ ctM: this.state.ctM + 1 });
-    } else if (this.state.ctD == true) {
-      this.setState({ ctM: this.state.ctM - 1 });
-    }
-
-    if (this.state.rtM == -240) {
-      this.setState({ rtD: false, rtM: this.state.rtM + 1 });
-    } else if (this.state.rtM == 240) {
-      this.setState({ rtD: true, rtM: this.state.rtM - 1 });
-    } else if (this.state.rtD == false) {
-      this.setState({ rtM: this.state.rtM + 1 });
-    } else if (this.state.rtD == true) {
-      this.setState({ rtM: this.state.rtM - 1 });
-    }
     if (this.state.tpM == -250) {
       this.setState({ tpD: false, tpM: this.state.tpM + 1 });
     } else if (this.state.tpM == 250) {
@@ -117,14 +76,8 @@ class HomeUvillage extends React.Component {
         case "b":
           this.setState({ bmL: false, action: false });
           break;
-        case "c":
-          this.setState({ ctL: false, action: false });
-          break;
-        case "f":
-          this.setState({ lfL: false, action: false });
-          break;
-        case "r":
-          this.setState({ rtL: false, action: false });
+        case "s":
+          this.setState({ sL: false, action: false });
           break;
       }
     } else if ("l") {
@@ -142,76 +95,40 @@ class HomeUvillage extends React.Component {
   render() {
     const y = window.innerWidth / 2;
     return (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          backgroundColor: this.props.color.started < 4 ? "#fff" : "green",
-          backgroundImage:
-            'url("https://piskel-imgstore-b.appspot.com/img/10eda3f0-5b6a-11ea-81f5-5de7032cf0c5.gif")',
-        }}
-      >
+      <Outside props={this.props}>
         <div
           style={{
             zIndex: "3",
             top: "2px",
-            left: "64px",
+            left: "32px",
             position: "relative",
           }}
         >
           <img
-            onMouseEnter={() => this.props.loader("homePvillage")}
+            onMouseEnter={() => this.props.loader("homeQvillage")}
             src="https://piskel-imgstore-b.appspot.com/img/4f86b197-5c06-11ea-a914-033203692228.gif"
           ></img>
         </div>
-        <div
-          style={{
-            top: `${this.state.lfM + 185}px`,
-            left: "96px",
-            position: "relative",
-          }}
-        >
-          <h1>
-            <b
-              onMouseEnter={() => this.setState({ action: true, duel: "f" })}
-              onMouseLeave={() => this.setState({ action: true, duel: "f" })}
-            >
-              {this.state.lfL ? "#" : " "}
-            </b>
-          </h1>
-        </div>
-        <div
-          style={{
-            top: `${this.state.ctM + 115}px`,
-            left: "256px",
-            position: "relative",
-          }}
-        >
-          <h1>
-            <b
-              onMouseEnter={() => this.setState({ action: true, duel: "c" })}
-              onMouseLeave={() => this.setState({ action: true, duel: "c" })}
-            >
-              {this.state.ctL ? "#" : " "}
-            </b>
-          </h1>
-        </div>
-        <div
-          style={{
-            top: `${this.state.rtM + 70}px`,
-            left: "416px",
-            position: "relative",
-          }}
-        >
-          <h1>
-            <b
-              onMouseEnter={() => this.setState({ action: true, duel: "r" })}
-              onMouseLeave={() => this.setState({ action: true, duel: "r" })}
-            >
-              {this.state.rtL ? "#" : " "}
-            </b>
-          </h1>
-        </div>
+        {this.props.color.started < 4 && !this.state.action && (
+          <div
+            style={{
+              top: "-130px",
+              left: "6px",
+              position: "relative",
+              zIndex: "4",
+            }}
+          >
+            <h1>
+              <b
+                onMouseEnter={() => this.setState({ action: true, duel: "s" })}
+                onMouseLeave={() => this.setState({ action: true, duel: "s" })}
+                style={{ fontSize: "164px", zIndex: "3" }}
+              >
+                {this.state.sL ? "#" : " "}
+              </b>
+            </h1>
+          </div>
+        )}
         <div
           style={{
             top: "100px",
@@ -249,12 +166,12 @@ class HomeUvillage extends React.Component {
           style={{ top: "470px", left: `${y + 222}px`, position: "absolute" }}
         >
           <img
-            onMouseEnter={() => this.props.loader("desirestone")}
+            onMouseEnter={() => this.props.loader("village1")}
             src="https://piskel-imgstore-b.appspot.com/img/4f86b197-5c06-11ea-a914-033203692228.gif"
           ></img>
         </div>
         {this.action()}
-      </div>
+      </Outside>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
-import Battle from "../battle/Battle#";
+import Battle from "../../battle/Battle#";
+import Outside from "../../backgound/Outside"
 
 class HomeUvillage extends React.Component {
   state = {
@@ -12,7 +13,6 @@ class HomeUvillage extends React.Component {
     bmL: true,
     mdL: true,
     tpL: true,
-    sL: true,
     action: false,
   };
   componentDidMount() {
@@ -23,7 +23,7 @@ class HomeUvillage extends React.Component {
       tpM: t,
       mdM: m,
       bmM: b,
-      interval: setInterval(this.timer, 10),
+      interval: setInterval(this.timer, 100),
     });
   }
 
@@ -75,9 +75,6 @@ class HomeUvillage extends React.Component {
         case "b":
           this.setState({ bmL: false, action: false });
           break;
-        case "s":
-          this.setState({ sL: false, action: false });
-          break;
       }
     } else if ("l") {
       this.props.loader(this.props.color.stage, {
@@ -94,48 +91,13 @@ class HomeUvillage extends React.Component {
   render() {
     const y = window.innerWidth / 2;
     return (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          backgroundColor: this.props.color.started < 4 ? "#fff" : "green",
-          backgroundImage:
-            'url("https://piskel-imgstore-b.appspot.com/img/10eda3f0-5b6a-11ea-81f5-5de7032cf0c5.gif")',
-        }}
-      >
+      <Outside props={this.props}>
         <div
-          style={{
-            zIndex: "3",
-            top: "2px",
-            left: "32px",
-            position: "relative",
-          }}
+          style={{ top: "2px", left: "460px", position: "relative" }}
+          onMouseEnter={() => this.props.loader("village1")}
         >
-          <img
-            onMouseEnter={() => this.props.loader("homeQvillage")}
-            src="https://piskel-imgstore-b.appspot.com/img/4f86b197-5c06-11ea-a914-033203692228.gif"
-          ></img>
+          <img src="https://piskel-imgstore-b.appspot.com/img/4f86b197-5c06-11ea-a914-033203692228.gif"></img>
         </div>
-        {this.props.color.started < 4 && !this.state.action && (
-          <div
-            style={{
-              top: "-130px",
-              left: "6px",
-              position: "relative",
-              zIndex: "4",
-            }}
-          >
-            <h1>
-              <b
-                onMouseEnter={() => this.setState({ action: true, duel: "s" })}
-                onMouseLeave={() => this.setState({ action: true, duel: "s" })}
-                style={{ fontSize: "164px", zIndex: "3" }}
-              >
-                {this.state.sL ? "#" : " "}
-              </b>
-            </h1>
-          </div>
-        )}
         <div
           style={{
             top: "100px",
@@ -169,16 +131,14 @@ class HomeUvillage extends React.Component {
             <b>{this.state.bmL ? "#" : " "}</b>
           </h1>
         </div>
-        <div
-          style={{ top: "470px", left: `${y + 222}px`, position: "absolute" }}
-        >
+        <div style={{ top: "480px", left: `${y - 232}px`, position: "fixed" }}>
           <img
-            onMouseEnter={() => this.props.loader("village1")}
+            onMouseEnter={() => this.props.loader("outsidehome")}
             src="https://piskel-imgstore-b.appspot.com/img/4f86b197-5c06-11ea-a914-033203692228.gif"
           ></img>
         </div>
         {this.action()}
-      </div>
+      </Outside>
     );
   }
 }

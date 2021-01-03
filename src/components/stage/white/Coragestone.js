@@ -1,4 +1,5 @@
 import React from "react";
+import CourageStoneGif from '../../../media/white/courageStone.gif'
 
 class CourageStone extends React.Component {
   action() {
@@ -23,7 +24,7 @@ class CourageStone extends React.Component {
       >
         <img
           onClick={() => this.action()}
-          src="https://piskel-imgstore-b.appspot.com/img/18087026-5b5a-11ea-ab32-e9c455d1a893.gif"
+          src={CourageStoneGif}
         ></img>
       </div>
     );

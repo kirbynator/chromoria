@@ -1,14 +1,18 @@
 import React from "react";
 import Homi from "./stage/Menu";
-import Begin from "./stage/Begin";
-import CourageStone from "./stage/Coragestone";
-import DesireStone from "./stage/Desirestone";
-import OutsideHome from "./stage/OutsideHeroHouse";
-import HomeUvillage from "./stage/HomeUvilliage";
-import Village1 from "./stage/Village1";
-import Village1nside from "./stage/Village1nside";
-import HomePvillage from "./stage/HomePvilliage";
-import HomeQvillage from "./stage/HomeQvilliage";
+import Begin from "./stage/white/Begin";
+import CourageStone from "./stage/white/Coragestone";
+import OutsideHome from "./stage/white/OutsideHeroHouse";
+import HomeUvillage from "./stage/white/Home2Villiage";
+import Village1 from "./stage/white/Village1";
+import Village1nside from "./stage/white/Village1nside";
+import HomePvillage from "./stage/green/HomePvilliage";
+import HomeQvillage from "./stage/green/HomeQvilliage";
+import DesireStone from "./stage/green/Desirestone";
+
+//Stones
+import CourageStoneGif from '../media/white/courageStone.gif'
+import DesireStoneGif from '../media/green/desireStone.gif'
 
 class Home extends React.Component {
   state = {
@@ -126,7 +130,7 @@ class Home extends React.Component {
       return (
         <div
           style={{
-            zIndex: "9",
+            zIndex: "11",
             width: "512px",
             height: "512px",
             background: "#fff",
@@ -188,7 +192,13 @@ class Home extends React.Component {
               {this.state.started >= 0 && (
                 <img
                   style={{ width: "32px", height: "32px" }}
-                  src="https://piskel-imgstore-b.appspot.com/img/18087026-5b5a-11ea-ab32-e9c455d1a893.gif"
+                  src={CourageStoneGif}
+                ></img>
+              )}
+              {this.state.started >= 5 && (
+                <img
+                  style={{ width: "32px", height: "32px" }}
+                  src={DesireStoneGif}
                 ></img>
               )}
             </div>

@@ -1,5 +1,7 @@
 import React from "react";
-import Battle from "../battle/Battle#";
+import Battle from "../../battle/Battle#";
+import Outside from "../../backgound/Outside"
+
 
 class Village1 extends React.Component {
   state = { hjk: { boo: false, talk: "foo bar" } };
@@ -68,7 +70,7 @@ class Village1 extends React.Component {
         ></img>
       );
     } else {
-      return <p>gay</p>;
+      return <p>coming soon!</p>;
     }
   }
 
@@ -98,15 +100,7 @@ class Village1 extends React.Component {
   render() {
     const y = window.innerWidth / 2;
     return (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          backgroundColor: this.props.color.started < 4 ? "#fff" : "green",
-          backgroundImage:
-            'url("https://piskel-imgstore-b.appspot.com/img/10eda3f0-5b6a-11ea-81f5-5de7032cf0c5.gif")',
-        }}
-      >
+      <Outside props={this.props}>
         {this.bubble()}
         <div
           style={{
@@ -136,7 +130,7 @@ class Village1 extends React.Component {
         ></img>
         {this.viltalk()}
         {this.gotgreen()}
-      </div>
+      </Outside>
     );
   }
 }

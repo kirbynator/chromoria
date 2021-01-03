@@ -1,7 +1,10 @@
 import React from "react";
-import Battle from "../battle/Memory";
+import Battle from "../../battle/Memory";
+import DesireStoneGif from "../../../media/green/desireStone.gif"
+import OutsideG from  "../../../media/green/OutsideG.gif"
 
-class Desirestone extends React.Component {
+
+class DesireStone extends React.Component {
   state = { dia: 0, t: "460px", l: 100, battle: false };
 
   battle() {
@@ -20,7 +23,7 @@ class Desirestone extends React.Component {
     if (
       this.props.color.started < 4 &&
       this.state.dia != 6 &&
-      this.state.dia != 16
+      this.state.dia != 17
     ) {
       return (
         <div>
@@ -139,8 +142,7 @@ class Desirestone extends React.Component {
           width: "100%",
           height: "100%",
           backgroundColor: "green",
-          backgroundImage:
-            'url("https://piskel-imgstore-b.appspot.com/img/d4561157-6e4d-11ea-911a-535851f3664c.gif")',
+          backgroundImage: `url('${OutsideG}')`,
         }}
       >
         {this.bubble()}
@@ -150,6 +152,7 @@ class Desirestone extends React.Component {
               top: this.state.t,
               left: `${y + this.state.l}px`,
               position: "absolute",
+              opacity: this.props.color.started < 4 ? '1' :'0'
             }}
           >
             <img
@@ -163,7 +166,17 @@ class Desirestone extends React.Component {
             ></img>
           </div>
         )}
-        {(this.state.dia < 4 || this.state.dia > 15) && (
+        <div
+            style={{ top: "300px", left: `${y}px`, position: "absolute", opacity: this.state.dia > 13 && this.state.dia < 18 || this.props.color.started === 4 ? "1" : "0" }}
+          >
+            <img
+              onClick={() => this.props.color.started === 4 ? this.props.loader("desirestone", {
+                started: this.props.color.started + 1,
+              }) : alert("Wow how rude, at least wait until they are done talking.")}
+              src={DesireStoneGif}
+            ></img>
+          </div>
+        {(this.state.dia < 4 || this.props.color.started > 3) && (
           <div
             style={{ top: "490px", left: `${y + 208}px`, position: "absolute" }}
           >
@@ -179,4 +192,4 @@ class Desirestone extends React.Component {
   }
 }
 
-export default Desirestone;
+export default DesireStone;

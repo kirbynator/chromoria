@@ -302,7 +302,7 @@ class Battle extends React.Component {
     return (
       <div
         style={{
-          zIndex: "42",
+          zIndex: "9",
           width: "512px",
           height: "512px",
           background: "#fff",
