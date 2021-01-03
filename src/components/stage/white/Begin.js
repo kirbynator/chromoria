@@ -9,7 +9,7 @@ class Begin extends React.Component {
   };
 
   dfghj() {
-    if (this.props.color.started == 0) {
+    if (this.props.color.started === 0) {
       return (
         <div>
           <p

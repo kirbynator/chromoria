@@ -36,7 +36,7 @@ class Menu extends React.Component {
     } else {
       return (
         <div>
-          <p>Welcome to Chromotale</p>
+          <p>Welcome to Chromoria</p>
           <button onClick={() => this.props.loader("begin")}>Begin</button>
           <button onClick={() => this.setState({ code: true })}>
             Save Code

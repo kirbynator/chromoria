@@ -1,7 +1,7 @@
 import React from "react";
 import Battle from "../../battle/Battle#";
 import Outside from "../../backgound/Outside"
-
+import VillageHouse1 from "../../backgound/buildings/VillageHouse1"
 
 class Village1 extends React.Component {
   state = { hjk: { boo: false, talk: "foo bar" } };
@@ -116,17 +116,17 @@ class Village1 extends React.Component {
         <img
           onMouseEnter={() => this.props.loader("village1nside", { temp: 1 })}
           style={{ top: "96px", position: "absolute" }}
-          src="https://piskel-imgstore-b.appspot.com/img/bdb4c65c-6c7b-11ea-ab1f-6fc0fc2128c5.gif"
+          src={VillageHouse1(this.props)}
         ></img>
         <img
           onMouseEnter={() => this.props.loader("village1nside", { temp: 2 })}
           style={{ top: "106px", position: "relative", left: "448px" }}
-          src="https://piskel-imgstore-b.appspot.com/img/bdb4c65c-6c7b-11ea-ab1f-6fc0fc2128c5.gif"
+          src={VillageHouse1(this.props)}
         ></img>
         <img
           onMouseEnter={() => this.props.loader("village1nside", { temp: 3 })}
           style={{ top: "300px", position: "relative", left: "-64px" }}
-          src="https://piskel-imgstore-b.appspot.com/img/bdb4c65c-6c7b-11ea-ab1f-6fc0fc2128c5.gif"
+          src={VillageHouse1(this.props)}
         ></img>
         {this.viltalk()}
         {this.gotgreen()}

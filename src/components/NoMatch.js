@@ -4,7 +4,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        Welcome to Chromotale
+        Welcome to Chromoria
         <button>Begin</button>
       </div>
     );
