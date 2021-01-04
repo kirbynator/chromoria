@@ -53,16 +53,11 @@ class Home extends React.Component {
     this.setState({ stage: a[0], started: a[1], life: a[2], maxLife: a[3] });
   };
 
-  display() {
-    
-  }
-
   option() {
     if (this.state.opt && this.state.stage !== "menu") {
       return (
        <Options loader={this.loader} color={this.state}/>
       );
-      document.getElementById("theInput").focus();
     } else if (this.state.opt) {
       this.setState({ opt: false });
     }

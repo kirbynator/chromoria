@@ -1,5 +1,7 @@
 import React from "react";
 import StoredURL from '../../../media/white/lifeStored.jpg'
+import FloorW from "../../../media/white/Village1FloorW.png"
+import FloorR from "../../../media/red/Village1FloorR.png"
 
 class Begin extends React.Component {
   state = { dia: 0, hjk: false, dia: 0 };
@@ -135,9 +137,9 @@ class Begin extends React.Component {
   }
 
   build(b) {
+    const y = window.innerWidth / 2;
     switch (b) {
       case 1:
-        const y = window.innerWidth / 2;
         return (
           <div style={{ width: "100%", height: "100%" }}>
             {this.mememe()}
@@ -155,7 +157,7 @@ class Begin extends React.Component {
                 height: "256px"
               }}
               src={StoredURL}
-            ></img>
+            />
             <img
               onMouseEnter={() => this.setState({ meme: true })}
               onMouseLeave={() => this.setState({ meme: false })}
@@ -197,10 +199,21 @@ class Begin extends React.Component {
                 position: "relative",
                 left: "100px",
                 width: "18px",
-                height: "18px"
+                height: "18px",
+                zIndex: "2"
               }}
               src="https://ya-webdesign.com/images250_/cursor-arrow-png-7.png"
             ></img>
+            <div
+              style={{
+                position: "absolute",
+                left: `${y - 128}px`,
+                top: "160px",
+                width: "256px",
+                height: "256px",
+                background: this.props.color.started > 4 ? "#228b22" : "#fff"
+              }}
+            />
           </div>
         );
         break;
@@ -212,6 +225,16 @@ class Begin extends React.Component {
               style={{ top: "490px", position: "absolute" }}
               src="https://piskel-imgstore-b.appspot.com/img/91aef270-5b63-11ea-b28d-e9c455d1a893.gif"
             ></img>
+            <div
+              style={{
+                position: "absolute",
+                left: `${y - 128}px`,
+                top: "160px",
+                width: "256px",
+                height: "256px",
+                background: this.props.color.started > 4 ? "#0f0" : "#fff"
+              }}
+            />
           </div>
         );
         break;
@@ -226,10 +249,10 @@ class Begin extends React.Component {
           height: "100%",
           backgroundColor: "#fff",
           backgroundImage:
-            'url("https://piskel-imgstore-b.appspot.com/img/e24790c7-5b5d-11ea-9381-017aeb12baa9.gif")'
+            `url("${this.props.color.started > 111 ? FloorR : FloorW}")`
         }}
       >
-        {this.build(this.props.color.temp)}
+        {this.build(this.props.color.temp || 2)}
       </div>
     );
   }
