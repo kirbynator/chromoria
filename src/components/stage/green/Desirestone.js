@@ -21,9 +21,10 @@ class DesireStone extends React.Component {
 
   bubble() {
     if (
-      this.props.color.started < 4 &&
+      (this.props.color.started < 4 &&
       this.state.dia !== 6 &&
-      this.state.dia !== 17
+      this.state.dia !== 17) ||
+      this.state.dia > 19
     ) {
       return (
         <div>
@@ -61,7 +62,7 @@ class DesireStone extends React.Component {
             </button>
           </div>
         );
-      } else if (this.state.dia <= 4 || this.state.dia >= 7) {
+      } else if (this.state.dia <= 4 || this.state.dia >= 7 || this.state.dia === 20) {
         return (
           <button onClick={() => this.setState({ dia: this.state.dia + 1 })}>
             <b>></b>
@@ -132,6 +133,15 @@ class DesireStone extends React.Component {
       case 19:
         this.setState({ dia: 10 });
         break;
+      case 20:
+      this.props.loader("desirestone", {
+        started: this.props.color.started + 1
+      })
+      this.setState({ dia:21 })
+      break;
+      case 21:
+        return "You pick up the green stone and are filled with desire."
+      break
     }
   }
   render() {
@@ -170,9 +180,7 @@ class DesireStone extends React.Component {
             style={{ top: "300px", left: `${y}px`, position: "absolute", opacity: this.state.dia > 13 && this.state.dia < 18 || this.props.color.started === 4 ? "1" : "0" }}
           >
             <img
-              onClick={() => this.props.color.started === 4 ? this.props.loader("desirestone", {
-                started: this.props.color.started + 1,
-              }) : alert("Wow how rude, at least wait until they are done talking.")}
+              onClick={() => this.props.color.started === 4 ? this.setState({dia: 20}) : alert("I know you dont have the stone of patiences, but please have some.")}
               src={DesireStoneGif}
             ></img>
           </div>

@@ -1,18 +1,6 @@
 import React from "react";
-import Homi from "./stage/Menu";
-import Begin from "./stage/white/Begin";
-import CourageStone from "./stage/white/Coragestone";
-import OutsideHome from "./stage/white/OutsideHeroHouse";
-import HomeUvillage from "./stage/white/Home2Villiage";
-import Village1 from "./stage/white/Village1";
-import Village1nside from "./stage/white/Village1nside";
-import HomePvillage from "./stage/green/HomePvilliage";
-import HomeQvillage from "./stage/green/HomeQvilliage";
-import DesireStone from "./stage/green/Desirestone";
-
-//Stones
-import CourageStoneGif from '../media/white/courageStone.gif'
-import DesireStoneGif from '../media/green/desireStone.gif'
+import Options from "./extra/Options"
+import Levels from "./extra/Levels"
 
 class Home extends React.Component {
   state = {
@@ -24,14 +12,6 @@ class Home extends React.Component {
     maxLife: 0,
     oldLife: 0,
   };
-
-  button(value) {
-    if (value.toLowerCase() === "resume") {
-      this.setState({ opt: false, input: "" });
-    } else if (value.toLowerCase() === "quit") {
-      window.location.reload(false);
-    }
-  }
 
   loader = (s, x) => {
     this.setState({ stage: s, ...x });
@@ -74,136 +54,13 @@ class Home extends React.Component {
   };
 
   display() {
-    switch (this.state.stage) {
-      case "menu":
-        return <Homi saveload={this.savecode} loader={this.loader}></Homi>;
-        break;
-      case "begin":
-        return <Begin loader={this.loader} color={this.state}></Begin>;
-        break;
-      case "couragestone":
-        return (
-          <CourageStone loader={this.loader} color={this.state}></CourageStone>
-        );
-        break;
-      case "desirestone":
-        return (
-          <DesireStone loader={this.loader} color={this.state}></DesireStone>
-        );
-        break;
-      case "outsidehome":
-        return (
-          <OutsideHome loader={this.loader} color={this.state}></OutsideHome>
-        );
-        break;
-      case "home2village":
-        return (
-          <HomeUvillage loader={this.loader} color={this.state}></HomeUvillage>
-        );
-        break;
-      case "homePvillage":
-        return (
-          <HomePvillage loader={this.loader} color={this.state}></HomePvillage>
-        );
-        break;
-      case "homeQvillage":
-        return (
-          <HomeQvillage loader={this.loader} color={this.state}></HomeQvillage>
-        );
-        break;
-      case "village1":
-        return <Village1 loader={this.loader} color={this.state}></Village1>;
-        break;
-      case "village1nside":
-        return (
-          <Village1nside
-            loader={this.loader}
-            color={this.state}
-          ></Village1nside>
-        );
-        break;
-    }
+    
   }
 
   option() {
     if (this.state.opt && this.state.stage !== "menu") {
       return (
-        <div
-          style={{
-            zIndex: "11",
-            width: "512px",
-            height: "512px",
-            background: "#fff",
-            top: "32px",
-            position: "absolute",
-          }}
-        >
-          <div>
-            <h1
-              style={{ left: "210px", marginTop: "15%", position: "relative" }}
-            >
-              Pause
-            </h1>
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "-3%",
-              }}
-            >
-              <h4>
-                Savecode: {this.state.stage},{this.state.started},
-                {this.state.life},{this.state.maxLife}
-              </h4>
-            </div>
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-around",
-                marginTop: "2%",
-              }}
-            >
-              <button
-                style={{ padding: "15px 32px" }}
-                onClick={() => this.button("resume")}
-              >
-                Resume
-              </button>
-              <button
-                style={{ padding: "17px 42px" }}
-                onClick={() => this.button("quit")}
-              >
-                Quit
-              </button>
-            </div>
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-around",
-                marginTop: "2%",
-                background: "#000",
-                height: "262px",
-                alignItems: "center",
-              }}
-            >
-              {this.state.started >= 0 && (
-                <img
-                  style={{ width: "32px", height: "32px" }}
-                  src={CourageStoneGif}
-                ></img>
-              )}
-              {this.state.started >= 5 && (
-                <img
-                  style={{ width: "32px", height: "32px" }}
-                  src={DesireStoneGif}
-                ></img>
-              )}
-            </div>
-          </div>
-        </div>
+       <Options loader={this.loader} color={this.state}/>
       );
       document.getElementById("theInput").focus();
     } else if (this.state.opt) {
@@ -234,7 +91,7 @@ class Home extends React.Component {
             style={{ width: "32px", height: "512px" }}
           ></div>
           <div style={{ width: "512px", height: "512px" }}>
-            {this.display()}
+            {Levels(this.state, this.loader, this.savecode)}
             {this.option()}
             {this.life()}
           </div>

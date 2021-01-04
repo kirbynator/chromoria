@@ -14,7 +14,7 @@ class Begin extends React.Component {
           return "That is a particular stone you have there, would you like to find out more about it?";
           break;
         case 2:
-          return "There is a ledgends of different color stones, each with their own emotion tied to it";
+          return "There is a ledgens of different color stones, each with their own emotion tied to it";
           break;
         case 3:
           return "These stones, when placed in the chroma temple, allow the people of this land to have feelings";
@@ -26,7 +26,7 @@ class Begin extends React.Component {
           return "The fact you are holding it alludes to the stones being removed from the temple";
           break;
         case 6:
-          return "That is a disturbing though...";
+          return "That is a disturbing thought...";
           break;
         case 7:
           return "Anyways thank you for taking your time to talk to me";
