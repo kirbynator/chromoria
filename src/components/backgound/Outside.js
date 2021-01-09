@@ -15,7 +15,6 @@ const Outside = ({props, children}) => (
     style={{
       width: "100%",
       height: "100%",
-      backgroundColor: props.color.started < 5 ? "#fff" : "green",
       backgroundImage: getBackgoundImage(props.color.started)
     }}
   > {children} </div>

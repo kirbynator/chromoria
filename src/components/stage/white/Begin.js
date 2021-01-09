@@ -20,7 +20,7 @@ class Begin extends React.Component {
               borderStyle: "solid"
             }}
           >
-            You pick up the white rock and are filled with determation
+            You pick up the white rock and are filled with courage
           </p>
           <button onClick={() => this.dose()}>
             <b>></b>
@@ -44,7 +44,7 @@ class Begin extends React.Component {
         return "You wake up in complete darkness";
         break;
       case 1:
-        return "Neadless to say, you are quite confused";
+        return "Needless to say, you are quite confused";
         break;
       case 2:
         return "*CRASH*";

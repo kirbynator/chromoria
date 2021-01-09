@@ -11,6 +11,7 @@ import Village1nside from "../stage/white/Village1nside";
 import HomePvillage from "../stage/green/HomePvilliage";
 import HomeQvillage from "../stage/green/HomeQvilliage";
 import DesireStone from "../stage/green/Desirestone";
+import Green2Pink from "../stage/green/Green2Pink"    
 
 const setLocalStorage = color => {
     localStorage.setItem('myData',
@@ -21,55 +22,59 @@ const setLocalStorage = color => {
 const Levels = (color, loader, savecode) => {
     switch (color.stage) {
         case "menu":
-            return <Menu saveload={savecode} loader={loader}></Menu>;
+            return <Menu saveload={savecode} loader={loader}/>
             break;
         case "begin":
             setLocalStorage(color)
-            return <Begin loader={loader} color={color}></Begin>;
+            return <Begin loader={loader} color={color}/>
             break;
         case "couragestone":
             setLocalStorage(color)
             return (
-                <CourageStone loader={loader} color={color}></CourageStone>
+                <CourageStone loader={loader} color={color}/>
             );
             break;
         case "desirestone":
             setLocalStorage(color)
             return (
-                <DesireStone loader={loader} color={color}></DesireStone>
+                <DesireStone loader={loader} color={color}/>
             );
             break;
         case "outsidehome":
             setLocalStorage(color)
             return (
-                <OutsideHome loader={loader} color={color}></OutsideHome>
+                <OutsideHome loader={loader} color={color}/>
             );
             break;
         case "home2village":
             setLocalStorage(color)
             return (
-                <HomeUvillage loader={loader} color={color}></HomeUvillage>
+                <HomeUvillage loader={loader} color={color}/>
             );
             break;
         case "homePvillage":
             setLocalStorage(color)
             return (
-                <HomePvillage loader={loader} color={color}></HomePvillage>
+                <HomePvillage loader={loader} color={color}/>
             );
             break;
         case "homeQvillage":
             setLocalStorage(color)
             return (
-                <HomeQvillage loader={loader} color={color}></HomeQvillage>
+                <HomeQvillage loader={loader} color={color}/>
             );
             break;
         case "village1":
             setLocalStorage(color)
-            return <Village1 loader={loader} color={color}></Village1>;
+            return <Village1 loader={loader} color={color}/>;
             break;
         case "village1nside":
             setLocalStorage(color)
-            return <Village1nside loader={loader} color={color} ></Village1nside>
+            return <Village1nside loader={loader} color={color} />
+            break;
+        case "green2pink":
+            setLocalStorage(color)
+            return <Green2Pink loader={loader} color={color} />
             break;
     }
 

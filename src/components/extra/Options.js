@@ -1,6 +1,7 @@
 import React from "react";
 import CourageStoneGif from '../../media/white/courageStone.gif'
 import DesireStoneGif from '../../media/green/desireStone.gif'
+import Letter from '../../media/green/Letter.gif'
 
 class Options extends React.Component {
   state = { show: 0 }
@@ -29,7 +30,11 @@ class Options extends React.Component {
             alignItems: "center",
           }}
         >
-          commingsoon
+          <img
+          onClick={()=> alert("A letter to deliever to the ambiguous next villiage.")}
+              style={{ width: "32px", height: "32px" }}
+              src={Letter}
+            ></img>
           </div>
       )
     } else if (this.state.show === 1) {

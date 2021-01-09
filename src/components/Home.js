@@ -14,7 +14,7 @@ class Home extends React.Component {
   };
 
   loader = (s, x) => {
-    this.setState({ stage: s, ...x });
+    this.setState({ stage: s ? s: this.state.stage, ...x });
   };
 
   life() {
@@ -29,7 +29,7 @@ class Home extends React.Component {
           gr.push("x");
         }
       }
-      window.history.replaceState(null, null, `#Life:(${gr})`);
+      window.history.replaceState(null, null, `#Health:(${gr})`);
     }
   }
 

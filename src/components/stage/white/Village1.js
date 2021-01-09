@@ -4,9 +4,9 @@ import Outside from "../../backgound/Outside"
 import VillageHouse1 from "../../backgound/buildings/VillageHouse1"
 
 class Village1 extends React.Component {
-  state = { hjk: { boo: false, talk: "foo bar" } };
+  state = { hjk: { boo: false, talk: "foo bar" }, dia:0 };
 
-  viltalk() {
+  viltalk(y) {
     if (this.props.color.started < 3) {
       return (
         <img
@@ -21,9 +21,9 @@ class Village1 extends React.Component {
           }
           onMouseLeave={() => this.setState({ hjk: { boo: false } })}
           style={{
-            top: "345px",
-            position: "relative",
-            left: "358px",
+            top: "500px",
+            left: `${y+222}px`,
+            position: "absolute",
             width: "18px",
             height: "18px",
           }}
@@ -35,9 +35,9 @@ class Village1 extends React.Component {
         <img
           onMouseEnter={() => this.props.loader("homePvillage")}
           style={{
-            top: "345px",
-            position: "relative",
-            left: "354px",
+            top: "500px",
+            left: `${y+222}px`,
+            position: "absolute",
           }}
           src="https://piskel-imgstore-b.appspot.com/img/4f86b197-5c06-11ea-a914-033203692228.gif"
         ></img>
@@ -45,7 +45,7 @@ class Village1 extends React.Component {
     }
   }
 
-  gotgreen() {
+  gotgreen(y) {
     if (this.props.color.started < 4) {
       return (
         <img
@@ -60,9 +60,8 @@ class Village1 extends React.Component {
           }
           onMouseLeave={() => this.setState({ hjk: { boo: false } })}
           style={{
-            top: "113px",
-            position: "relative",
-            left: "-145px",
+            top: "268px",
+            position: "absolute",
             width: "18px",
             height: "18px",
           }}
@@ -70,12 +69,27 @@ class Village1 extends React.Component {
         ></img>
       );
     } else {
-      return <p>coming soon!</p>;
+      return(<img
+          onMouseEnter={() => !this.state.hjk.boo &&
+            this.setState({
+              hjk: {
+                boo: true
+              },
+            })
+          }
+          style={{
+            top: "268px",
+            position: "absolute",
+            width: "18px",
+            height: "18px",
+          }}
+          src="https://ya-webdesign.com/images250_/cursor-arrow-png-7.png"
+        ></img>)
     }
   }
 
   bubble() {
-    if (this.state.hjk.boo === true) {
+    if (this.state.hjk.boo === true && this.props.color.started < 5) {
       return (
         <div>
           <p
@@ -92,8 +106,76 @@ class Village1 extends React.Component {
           </p>
         </div>
       );
+    } else if (this.state.hjk.boo === true && this.props.color.started >= 5) {
+        return (<div>
+          <p
+            style={{
+              position: "relative",
+              zIndex: "2",
+              background: "#fff",
+              marginTop: "0px",
+              borderColor: "#000",
+              borderStyle: "solid",
+            }}
+          >
+            {this.text()}
+          </p>
+            {this.button()}
+        </div>)
     } else {
       return <div style={{ height: "58px" }}></div>;
+    }
+  }
+
+  text() {
+    switch (this.state.dia) {
+      case 0:
+        return 'Hi, would you be willing to deliver a letter to the next village?'
+      break;
+      case 1:
+        this.setState({dia:0, hjk: { boo: false }})
+      break;
+      case 2:
+        return 'Great, thank you so much!'
+      break;
+      case 3:
+        return 'You can store items in the green stone you hold'
+      break;
+      case 3:
+        return "I'll put the letter in it to show you."
+      break;
+      case 4:
+        this.props.loader(null, {started: this.props.color.started + 1})
+        this.setState({dia:5})
+      break;
+      case 5:
+        return "Stay save, and if you die on the way there let me know!"
+      break;
+    }
+  }
+
+  button() {
+    if (this.props.color.started > 4) {
+      if (this.state.dia === 0) {
+        return (
+          <div>
+            <button onClick={() => this.setState({ dia: 2 })}>
+              <b>Yes</b>
+            </button>
+            <button onClick={() => this.setState({ dia: 1 })}>
+              <b>No</b>
+            </button>
+          </div>
+        );
+      } else if (this.state.dia >= 2 && this.state.dia < 5 ) {
+        return (
+          <button onClick={() => this.setState({ dia: this.state.dia + 1 })}>
+            <b>></b>
+          </button>
+        );
+      }
+    } else if (this.props.color.started > 2 && this.state.hjk.boo) {
+      return <div style={{ height: "19px" }}></div>;
     }
   }
 
@@ -104,10 +186,9 @@ class Village1 extends React.Component {
         {this.bubble()}
         <div
           style={{
-            top: "-56px",
-
-            left: "478px",
-            position: "relative",
+            top: "36px",
+            left: `${y+180}px`,
+            position: "absolute",
           }}
           onMouseEnter={() => this.props.loader("home2village")}
         >
@@ -120,16 +201,26 @@ class Village1 extends React.Component {
         ></img>
         <img
           onMouseEnter={() => this.props.loader("village1nside", { temp: 2 })}
-          style={{ top: "106px", position: "relative", left: "448px" }}
+          style={{ top: "268px", position: "absolute", left: `${y+192}px` }}
           src={VillageHouse1(this.props)}
         ></img>
         <img
           onMouseEnter={() => this.props.loader("village1nside", { temp: 3 })}
-          style={{ top: "300px", position: "relative", left: "-64px" }}
+          style={{ top: "404px", position:'absolute' }}
           src={VillageHouse1(this.props)}
         ></img>
-        {this.viltalk()}
-        {this.gotgreen()}
+        {this.props.color.started > 5 && <div
+          style={{
+            top: "284px",
+            position: "absolute",
+          }}
+          onMouseEnter={() => this.props.loader("green2pink")}
+        >
+          <img src="https://piskel-imgstore-b.appspot.com/img/4f86b197-5c06-11ea-a914-033203692228.gif"></img>
+        </div>}
+        {this.viltalk(y)}
+        {this.props.color.started < 6 && this.gotgreen()}
+
       </Outside>
     );
   }

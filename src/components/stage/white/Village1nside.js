@@ -3,7 +3,7 @@ import StoredURL from '../../../media/white/lifeStored.jpg'
 import FloorW from "../../../media/white/Village1FloorW.png"
 import FloorR from "../../../media/red/Village1FloorR.png"
 
-class Begin extends React.Component {
+class Village1nside extends React.Component {
   state = { dia: 0, hjk: false, dia: 0 };
 
   text() {
@@ -16,7 +16,7 @@ class Begin extends React.Component {
           return "That is a particular stone you have there, would you like to find out more about it?";
           break;
         case 2:
-          return "There is a ledgens of different color stones, each with their own emotion tied to it";
+          return "There is a ledgends of different color stones, each with their own emotion tied to it";
           break;
         case 3:
           return "These stones, when placed in the chroma temple, allow the people of this land to have feelings";
@@ -47,7 +47,7 @@ class Begin extends React.Component {
           this.setState({ dia: 11 });
           break;
         case 11:
-          return "*You gained a life*";
+          return "*Your max health increased!*";
           break;
         case 12:
           this.setState({ dia: 14 });
@@ -104,7 +104,7 @@ class Begin extends React.Component {
               borderStyle: "solid"
             }}
           >
-            I got my favorite meme turned into a throw rug!
+            {this.props.color.temp == 1 ? "I got my favorite meme turned into a throw rug!" : "In this land, accepting to deliver a letter is legaly binding"}
           </p>
         </div>
       );
@@ -176,10 +176,11 @@ class Begin extends React.Component {
       case 2:
         return (
           <div style={{ width: "100%", height: "100%" }}>
+            {this.props.color.started > 5 && this.mememe()}
             {this.bubble()}
             <img
               onMouseEnter={() => this.props.loader("village1")}
-              style={{ top: "264px", left: "479px", position: "relative" }}
+              style={{ top: "332px", left: `${y+223}px`, position: "absolute" }}
               src="https://piskel-imgstore-b.appspot.com/img/91aef270-5b63-11ea-b28d-e9c455d1a893.gif"
             ></img>
 
@@ -195,15 +196,28 @@ class Begin extends React.Component {
                   : null
               }
               style={{
-                top: "100px",
-                position: "relative",
-                left: "100px",
+                top: "200px",
+                position: "absolute",
+                left: `${y-64}px`,
                 width: "18px",
                 height: "18px",
                 zIndex: "2"
               }}
               src="https://ya-webdesign.com/images250_/cursor-arrow-png-7.png"
             ></img>
+            {this.props.color.started > 5 && <img
+              onMouseEnter={ () => this.setState({ meme: true }) }
+              onMouseLeave={ () => this.setState({ meme: false })}
+              style={{
+                top: "330px",
+                position: "absolute",
+                left: `${y+86}px`,
+                width: "18px",
+                height: "18px",
+                zIndex: "2"
+              }}
+              src="https://ya-webdesign.com/images250_/cursor-arrow-png-7.png"
+            ></img>}
             <div
               style={{
                 position: "absolute",
@@ -257,4 +271,4 @@ class Begin extends React.Component {
     );
   }
 }
-export default Begin;
+export default Village1nside;
