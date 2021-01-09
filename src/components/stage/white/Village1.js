@@ -141,14 +141,14 @@ class Village1 extends React.Component {
       case 3:
         return 'You can store items in the green stone you hold'
       break;
-      case 3:
+      case 4:
         return "I'll put the letter in it to show you."
       break;
-      case 4:
-        this.props.loader(null, {started: this.props.color.started + 1})
-        this.setState({dia:5})
-      break;
       case 5:
+        this.props.loader(null, {started: this.props.color.started + 1})
+        this.setState({dia:6})
+      break;
+      case 6:
         return "Stay save, and if you die on the way there let me know!"
       break;
     }
@@ -219,7 +219,7 @@ class Village1 extends React.Component {
           <img src="https://piskel-imgstore-b.appspot.com/img/4f86b197-5c06-11ea-a914-033203692228.gif"></img>
         </div>}
         {this.viltalk(y)}
-        {this.props.color.started < 6 && this.gotgreen()}
+        {(this.props.color.started < 6 || this.state.dia > 5) && this.gotgreen()}
 
       </Outside>
     );
