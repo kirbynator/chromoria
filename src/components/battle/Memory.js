@@ -104,7 +104,7 @@ class Memory extends React.Component {
         return "We are going to play a game of memory.";
         break;
       case 1:
-        return "Let's make a wager, winner get's the others stone";
+        return "Let's make a wager, winner gets the others stone";
         break;
       case 2:
         if (this.state.score[0] + this.state.score[1] === 8) {

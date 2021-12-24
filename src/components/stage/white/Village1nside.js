@@ -6,6 +6,23 @@ import FloorR from "../../../media/red/Village1FloorR.png"
 class Village1nside extends React.Component {
   state = { dia: 0, hjk: false, dia: 0 };
 
+  house3text() {
+    switch (this.state.dia) {
+      case 0:
+          return "My friend heard something land out in the fields and went to invistigate.";
+          break;
+      case 1:
+        return "My friend beat you in a game of memory, huh? They are the worst in the village..."
+        break;
+      case 2:
+        return "Thanks for the victory! But please don't tell anyone about our trade..."
+        break;
+      case 3:
+        return "Hopefully the Village Elder didn't bore you, I appreciate you talking to them for me."
+        break;
+    }
+  }
+
   text() {
     if (this.props.color.started < 3) {
       switch (this.state.dia) {
@@ -16,7 +33,7 @@ class Village1nside extends React.Component {
           return "That is a particular stone you have there, would you like to find out more about it?";
           break;
         case 2:
-          return "There is a ledgends of different color stones, each with their own emotion tied to it";
+          return "There is a legends of different color stones, each with their own emotion tied to it";
           break;
         case 3:
           return "These stones, when placed in the chroma temple, allow the people of this land to have feelings";
@@ -112,7 +129,7 @@ class Village1nside extends React.Component {
   }
 
   bubble() {
-    if (this.state.hjk || this.props.color.started < 3) {
+    if (this.state.hjk || this.props.color.started < 3 && this.props.color.temp == 2) {
       return (
         <div>
           <p
@@ -126,7 +143,7 @@ class Village1nside extends React.Component {
               borderStyle: "solid"
             }}
           >
-            {this.text()}
+            {this.props.color.temp == 3 ? this.house3text() : this.text()}
           </p>
           {this.button()}
         </div>
@@ -234,11 +251,44 @@ class Village1nside extends React.Component {
       case 3:
         return (
           <div style={{ width: "100%", height: "100%" }}>
+            {this.bubble()}
             <img
               onMouseEnter={() => this.props.loader("village1")}
               style={{ top: "490px", position: "absolute" }}
               src="https://piskel-imgstore-b.appspot.com/img/91aef270-5b63-11ea-b28d-e9c455d1a893.gif"
             ></img>
+            <img
+              onMouseEnter={ () => this.setState({ hjk: true, dia: this.props.color.started > 4 ? 1 : 0 }) }
+              onMouseLeave={ () => this.setState({ hjk: false })}
+              style={{
+                top: "375px",
+                position: "absolute",
+                left: `${y+148}px`,
+                width: "18px",
+                height: "18px",
+                zIndex: "2"
+              }}
+              src="https://ya-webdesign.com/images250_/cursor-arrow-png-7.png"
+            ></img>
+            {this.props.color.started > 2 && <img
+              onMouseEnter={ () => this.setState({ hjk: true, dia: 3 }) }
+              onMouseLeave={ () => this.setState({ hjk: false })}
+              style={{
+                top: "315px",
+                position: "absolute",
+                left: `${y-208}px`,
+                width: "18px",
+                height: "18px",
+                zIndex: "2"
+              }}
+              src="https://ya-webdesign.com/images250_/cursor-arrow-png-7.png"
+            ></img>}
+            {this.props.color.started > 4 && <img
+              onMouseEnter={ () => this.setState({ hjk: true, dia: 2 }) }
+              onMouseLeave={ () => this.setState({ hjk: false })}
+              style={{ width: "18px", height: "18px", position: "absolute", left: `${y - 128}px`, top: "111px", }}
+              src="https://imgur.com/lSr15pW.png"
+            />}
             <div
               style={{
                 position: "absolute",

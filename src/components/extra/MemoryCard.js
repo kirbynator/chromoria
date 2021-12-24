@@ -14,7 +14,7 @@ class Card extends React.Component {
         }}
         onClick={() =>
           this.props.card.up
-            ? alert("You have aready fliped this one")
+            ? alert("You have aready flipped this one")
             : this.props.drill(this.props.card)
         }
       >

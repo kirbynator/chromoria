@@ -5,7 +5,7 @@ class CourageStone extends React.Component {
   action() {
     this.props.loader("begin", {
       started: 0,
-      life: 2,
+      life: this.props.color.life + 1,
       maxLife: this.props.color.maxLife + 1
     });
   }
